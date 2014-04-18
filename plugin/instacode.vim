@@ -14,6 +14,8 @@ let g:loaded_instacode = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
+" function by StackOverflow user xolox
+" http://stackoverflow.com/a/6271254
 function! s:get_visual_selection()
 	" Why is this not a built-in Vim script function?!
 	let [lnum1, col1] = getpos("'<")[1:2]
@@ -35,10 +37,14 @@ endpython
 	else 
 		echomsg "You need to visually select something first"
 	endif
+	sleep 500m
+	redraw!
 endfunction
 
 command Instacode :call Instacode()
-vnoremap <leader>ic <Esc>:Instacode<CR>
+if !hasmapto("<Esc>:Instacode<CR>")
+	vnoremap <leader>ic <Esc>:Instacode<CR>
+endif
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
