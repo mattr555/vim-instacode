@@ -34,11 +34,11 @@ code = vim.eval('s:get_visual_selection()')
 filetype = vim.eval('&ft')
 webbrowser.open('http://instacod.es/?post_code=' + urllib.quote_plus(code) + '&post_lang=' + urllib.quote_plus(filetype.title()))
 endpython
+	sleep 500m
+	redraw!
 	else 
 		echomsg "You need to visually select something first"
 	endif
-	sleep 500m
-	redraw!
 endfunction
 
 command Instacode :call Instacode()
