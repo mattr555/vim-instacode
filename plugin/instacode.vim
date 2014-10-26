@@ -36,14 +36,14 @@ webbrowser.open('http://instacod.es/?post_code=' + urllib.quote_plus(code) + '&p
 endpython
 	sleep 500m
 	redraw!
-	else 
+	else
 		echomsg "You need to visually select something first"
 	endif
 endfunction
 
-command Instacode :call Instacode()
+command -range Instacode :call Instacode()
 if !hasmapto("<Esc>:Instacode<CR>")
-	vnoremap <leader>ic <Esc>:Instacode<CR>
+	xnoremap <leader>ic <Esc>:Instacode<CR>
 endif
 
 let &cpo = s:save_cpo
